@@ -1,0 +1,1022 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medion Field Tracker - WSR66 Kalimantan Timur</title>
+  <meta name="theme-color" content="#1e40af">
+  <meta name="description" content="Aplikasi Monitoring Kandang Ayam Petelur - PT. Medion Ardhika Bhakti">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Medion Field Tracker"><!-- Favicon SVG dengan Logo M -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231e40af'/%3E%3Cpath d='M15 75 L15 25 L30 25 L50 55 L70 25 L85 25 L85 75 L75 75 L75 42 L50 72 L25 42 L25 75 Z' fill='white'/%3E%3C/svg%3E"><!-- Favicon PNG fallback untuk browser lama -->
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2ElEQVR4nO2WMQ6DMAxFnwMXYOkVOEO7dqTiDBm6deYIXIErMHbpBVj6JVciEiWAHUdqEf+TLGXwt/2dGKUkSfpLAK4A7gCeAN4GZs/5AuBhkN8BXHoBYAngYZR/AVj2AmBulJ8BzHoAMDfKTwDmhvlF9wCObgHsHL6qW0Z10wOAnSuA3NWSO4Z3PQE4ujp6V7cOBzjqEcDBAYCtBwBbBwB2HgDsHBxR7wHAXrNIpf3Zvfuu7v1LW+2/L9h+A1jrNzir32Ktvou3+i/i6t+Iu38nvnEH8kqS1KO+AO48RKXqZgqCAAAAAElFTkSuQmCC"><!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsTAAALEwEAmpwYAAADiElEQVR4nO3cS2gTURTG8f9NbWt8tFofqKAiPkAQd6KgiBsFQVy4ERciblxUcOdC3LgRNy5EcCGCCxciCCIIoguxCxEEQRQRRPCBj1qtWq21tf5yISGTZibJJDPJzOSeAwNtcif3fvd+uTOTm4RSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVSqrA2UDQB7gGlgFTgOXAbmgJ+BxafALeCSvNYsec8U8FTe85287ziwW7ZVsngDcBgYB74CT4AvwBfgD/A7YHnz3Bv5jI/Ac2BMticyZ4AWoBuYBF4CHwk+0OnMa2V7urMc/BqgD7gGfCzhoKczv5Pt68/LAOqBYeBlCQc6nemNbHt9XgawHbiS48CnM6+VbbU7yL0AtgFnq/SLT+dCsW3IcgD1wAWqh+mNbHu9gwG0ANeqNPCpzHV5DacDaJNfrVIim97Ity90AWTS1lWZD55Nb2S7XXUAzSV+Xr2W7W8OqgMYKHHAU5l+twPor/KAp+t3O4CBKg94uoHYA1gHPA/5OL+QbV8X2k7QemBzgW0qhT3ANqIygMbQz/rFZ4C6WLYAc8D3kHpN2fK5Uvex6wTtCnGQfwL7KOIAtiJk0wk6HuJGvQfaSWAA+yh+J+gcOchmJ2gmxI16CezPUwD7KW4n6HS+AjgbYlDDpHgAw4TR4e8CbsY8gFEXAcy4COB6zAO47iKAWy4GsMdBAAO5DqAxpM4OQAfwJuYBvHERQH1I5x+s6gCGqM4AVvMyANPPtXPgNIZxBBgjYXaE1BmywQHsBFZCOi9sNh9dTph+QjoHsD/kM2xQBtBbyutWu4HlkDtZu4CdZOcA9lH8TtAp8ugESoYQOns7gXvRCWAP8CLE+/w+4CjZdYKOUfxO0CnysAtoAmZD7Ohccp/RiZCbISfI0w5gZYidoZ+hNoqcDoVwnt/sIE8HUEvsTO0iKE1t5Pm0iLbYBdApvd9BtXqvTqdKfRaW4rRYqZOsb8B1ct+/fVNOvKoiiJUQm7M2gGryXO6kVkMAFwlvSsVWoN/BwPuBlcg9vw/oJSedoBZgKUcBLAHtRKgT1B5yR+dxiDtBPRRxEDQIvIhBAC+AfkJu9raFeLx/lm2b8lsC3ka4b/w2xGbvTomg15Nv86MQAjgLrIcY7Lq8lir1W/hU7vNT2eb1AAM+7iCA1YBB/gEabLKPMaF2YAAAAABJRU5ErkJggg==">
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .medion-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #10b981 100%);
+    }
+
+    .medion-gradient-alt {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    }
+
+    .medion-card {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .animate-slide-in {
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .badge-vaksin {
+      background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+    }
+
+    .badge-vitamin {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+
+    .badge-obat {
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    }
+
+    .badge-sanitasi {
+      background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+    }
+
+    .toast {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .tab-active {
+      background: #1e40af;
+      color: white;
+      border-bottom: 3px solid #3b82f6;
+    }
+    
+    .select-custom {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2.5rem;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full bg-gray-50"><!-- Login Screen -->
+  <div id="loginScreen" class="h-full flex items-center justify-center p-4 medion-gradient">
+   <div class="medion-card rounded-2xl shadow-2xl p-8 w-full max-w-sm animate-slide-in border border-white/20">
+    <div class="text-center mb-10">
+     <div class="w-20 h-20 bg-gradient-to-br from-blue-800 to-blue-600 rounded-xl mx-auto mb-5 flex items-center justify-center shadow-lg"><!-- Logo Korporat: Huruf M Modern -->
+      <svg viewbox="0 0 100 100" class="w-14 h-14"><!-- Letter M dengan gaya korporat modern --> <path d="M15 75 L15 25 L30 25 L50 55 L70 25 L85 25 L85 75 L75 75 L75 42 L50 72 L25 42 L25 75 Z" fill="white" stroke="none" />
+      </svg>
+     </div>
+     <h1 class="text-2xl font-bold text-gray-900 mb-1 tracking-tight">Medion Field Tracker</h1>
+     <p class="text-xs text-gray-500 font-medium mb-6">PT. Medion Ardhika Bhakti</p>
+     <p class="text-gray-600 text-sm font-medium">"Monitoring Kandang, Jaga Produktivitas"</p>
+    </div>
+    <form id="loginForm" class="space-y-4">
+     <div><input type="text" id="loginUsername" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-600 focus:ring-2 focus:ring-blue-100 focus:outline-none transition-all bg-white text-gray-800 placeholder-gray-400" placeholder="Username">
+     </div>
+     <div><input type="password" id="loginPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-blue-600 focus:ring-2 focus:ring-blue-100 focus:outline-none transition-all bg-white text-gray-800 placeholder-gray-400" placeholder="Password">
+     </div><button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all mt-6"> Masuk </button>
+    </form>
+   </div>
+  </div><!-- Main App -->
+  <div id="mainApp" class="hidden h-full flex flex-col"><!-- Header -->
+   <header class="medion-gradient text-white p-5 shadow-xl">
+    <div class="flex items-center justify-between">
+     <div class="flex items-center space-x-4">
+      <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-lg"><!-- Logo Korporat Kecil -->
+       <svg viewbox="0 0 100 100" class="w-9 h-9"><path d="M15 75 L15 25 L30 25 L50 55 L70 25 L85 25 L85 75 L75 75 L75 42 L50 72 L25 42 L25 75 Z" fill="#1e40af" stroke="none" />
+       </svg>
+      </div>
+      <div>
+       <h1 class="text-xl font-bold tracking-tight">Medion Field Tracker</h1>
+       <p class="text-xs text-white/90 font-medium">WSR66 Kalimantan Timur</p>
+      </div>
+     </div>
+     <div class="text-right">
+      <p class="text-sm text-white font-medium mb-2" id="userInfo">Field Officer</p><button onclick="logout()" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg text-sm font-semibold transition-all border border-white/30"> Keluar </button>
+     </div>
+    </div>
+   </header><!-- Status Bar -->
+   <div class="bg-white border-b border-gray-200 px-4 py-2 flex items-center justify-between text-sm">
+    <div class="flex items-center space-x-4"><span id="onlineStatus" class="flex items-center space-x-1"> <span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-gray-700 font-medium">Online</span> </span> <span class="text-gray-600"><span id="visitCount">0</span> Kunjungan</span>
+    </div><span id="draftStatus" class="text-yellow-700 font-medium hidden"> <span id="draftCount">0</span> Draft Tersimpan </span>
+   </div><!-- Tab Navigation -->
+   <nav class="bg-white border-b-2 border-gray-200 overflow-x-auto">
+    <div class="flex"><button onclick="switchTab('form')" id="tabForm" class="tab-active px-6 py-3 font-semibold whitespace-nowrap transition-all"> Form Kunjungan </button> <button onclick="switchTab('visits')" id="tabVisits" class="px-6 py-3 font-semibold text-gray-600 hover:bg-gray-50 whitespace-nowrap transition-all"> Daftar Kunjungan </button> <button onclick="switchTab('health')" id="tabHealth" class="px-6 py-3 font-semibold text-gray-600 hover:bg-gray-50 whitespace-nowrap transition-all"> Program Kesehatan </button> <button onclick="switchTab('sanitation')" id="tabSanitation" class="px-6 py-3 font-semibold text-gray-600 hover:bg-gray-50 whitespace-nowrap transition-all"> Sanitasi </button> <button onclick="switchTab('disease')" id="tabDisease" class="px-6 py-3 font-semibold text-gray-600 hover:bg-gray-50 whitespace-nowrap transition-all"> Penyakit </button>
+    </div>
+   </nav><!-- Content Area -->
+   <main class="flex-1 overflow-y-auto p-4"><!-- Form Tab -->
+    <div id="contentForm" class="space-y-4">
+     <div class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Form Kunjungan Lapangan</h2>
+      <form id="visitForm" class="space-y-4">
+       <div class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-4">
+        <h3 class="font-bold text-gray-800 mb-2">Informasi Petugas</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+         <div><label for="namaField" class="block text-sm font-semibold text-gray-700 mb-2">Nama Petugas Lapangan</label> <input type="text" id="namaField" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white">
+         </div>
+         <div><label for="kodeSales" class="block text-sm font-semibold text-gray-700 mb-2">Kode Sales</label> <input type="text" id="kodeSales" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white">
+         </div>
+        </div>
+       </div>
+       <div class="bg-green-50 border-l-4 border-green-600 p-4 mb-4">
+        <h3 class="font-bold text-gray-800 mb-3">Pelanggan Utama (Master)</h3>
+        <div><label for="customerId" class="block text-sm font-semibold text-gray-700 mb-2">Pilih Pelanggan</label> <select id="customerId" required onchange="fillCustomerData()" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none select-custom bg-white"> <option value="">Pilih Pelanggan Utama...</option> <option value="18883">18883 - TOKO 39 (Samarinda Utara)</option> <option value="1H392">1H392 - RAIHAN (Teluk Pandan)</option> <option value="1C698">1C698 - SUBUR JAYA FARM (Teluk Pandan)</option> <option value="1D598">1D598 - MAMMINASAE (Sangatta)</option> <option value="12443">12443 - KAROMAH SAMARINDA (Marang Kayu)</option> <option value="19939">19939 - SARWINDU FARM (Tenggarong Seberang)</option> <option value="1C631">1C631 - ACHMAD AFANDI FARM (Muara Badak)</option> <option value="1H130">1H130 - PT. AYAM BAROKAH JAYA (Loa Janan)</option> <option value="12451">12451 - PACIFIC JAYA SEJAHTERA (Samarinda)</option> <option value="12456">12456 - UNGGAS JAYA FARM (Mangkurawang)</option> <option value="1D020">1D020 - ASTUTY POULTRY SHOP (Samarinda)</option> <option value="12438">12438 - PT. AYAM MAKMUR JAYA (Teluk Dalam)</option> <option value="1B945">1B945 - MASI BERSAUDARA (Melak)</option> <option value="17813">17813 - SUSANTO (AUTO) FARM (Tanah Datar)</option> <option value="1C256">1C256 - CV. TELUR KITA DUATIGA (Balikpapan)</option> <option value="1G708">1G708 - EGHY FARM (Penajam)</option> <option value="1I494">1I494 - CV. RISKY JAYA ABADI (Tanjung Batu)</option> <option value="12426">12426 - PT. SAPRONAK SATWA SAKTI (Loa Tebu)</option> <option value="18357">18357 - HENDRA FARM (Prangat)</option> </select>
+        </div>
+        <div class="mt-3 p-3 bg-white rounded-lg border border-green-200" id="customerInfo" style="display:none;">
+         <p class="text-xs text-gray-600 mb-1">Informasi Pelanggan:</p>
+         <p class="text-sm"><strong>Nama:</strong> <span id="infoNama">-</span></p>
+         <p class="text-sm"><strong>Alamat:</strong> <span id="infoAlamat">-</span></p>
+         <p class="text-sm"><strong>Telepon:</strong> <span id="infoTelepon">-</span></p>
+        </div>
+       </div>
+       <div class="bg-yellow-50 border-l-4 border-yellow-600 p-4">
+        <h3 class="font-bold text-gray-800 mb-3">Detail Kandang/Plasma</h3>
+        <p class="text-xs text-gray-600 mb-3">Isi data kandang atau plasma yang dikunjungi dari pelanggan di atas</p>
+        <div class="space-y-3">
+         <div><label for="namaKandang" class="block text-sm font-semibold text-gray-700 mb-2">Nama Kandang/Plasma</label> <input type="text" id="namaKandang" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white" placeholder="Contoh: Kandang A, Plasma Jaya, dsb">
+         </div>
+         <div><label for="namaPeternak" class="block text-sm font-semibold text-gray-700 mb-2">Nama Peternak/PIC Kandang</label> <input type="text" id="namaPeternak" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white">
+         </div>
+         <div><label for="nomorPeternak" class="block text-sm font-semibold text-gray-700 mb-2">Nomor Telepon Peternak</label> <input type="tel" id="nomorPeternak" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white" placeholder="08xxxxxxxxxx">
+         </div>
+         <div><label for="alamatKandang" class="block text-sm font-semibold text-gray-700 mb-2">Alamat Kandang</label> <textarea id="alamatKandang" required rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white" placeholder="Alamat lengkap lokasi kandang"></textarea>
+         </div>
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 pt-3 border-t border-yellow-300">
+          <div><label for="populasi" class="block text-sm font-semibold text-gray-700 mb-2">Populasi (ekor)</label> <input type="number" id="populasi" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white">
+          </div>
+          <div><label for="umurAyam" class="block text-sm font-semibold text-gray-700 mb-2">Umur Ayam (hari)</label> <input type="number" id="umurAyam" required onchange="checkHealthPrograms()" oninput="checkHealthPrograms()" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white">
+          </div>
+         </div>
+         <div><label for="catatan" class="block text-sm font-semibold text-gray-700 mb-2">Catatan Kunjungan</label> <textarea id="catatan" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none bg-white" placeholder="Kondisi ayam, saran, produk yang direkomendasikan..."></textarea>
+         </div>
+        </div>
+       </div><!-- Health Program Recommendations -->
+       <div id="healthRecommendations" class="hidden bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-400 rounded-xl p-5 shadow-md">
+        <div class="flex-1">
+         <div class="flex items-center space-x-2 mb-3">
+          <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewbox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+          </svg>
+          <h3 class="font-bold text-blue-900 text-lg">Rekomendasi Program Kesehatan</h3>
+         </div>
+         <div id="recommendationList" class="space-y-3"></div>
+        </div>
+       </div>
+       <div class="bg-blue-50 border border-blue-200 rounded-lg p-4"><label class="block text-sm font-semibold text-gray-700 mb-3">Lokasi Kandang</label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+         <div><label for="latitude" class="block text-xs font-medium text-gray-600 mb-1">Latitude</label> <input type="text" id="latitude" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none text-sm" placeholder="-0.123456">
+         </div>
+         <div><label for="longitude" class="block text-xs font-medium text-gray-600 mb-1">Longitude</label> <input type="text" id="longitude" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none text-sm" placeholder="117.123456">
+         </div>
+        </div>
+        <div class="flex gap-2"><button type="button" onclick="getLocation()" id="locationBtn" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all text-sm"> Gunakan Lokasi Saat Ini </button> <button type="button" onclick="previewMap()" id="previewMapBtn" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-semibold transition-all text-sm"> Preview Peta </button>
+        </div>
+        <div id="locationInfo" class="mt-3 text-xs text-gray-600 hidden">
+         <p>Koordinat: <span id="coordinates" class="font-mono"></span></p>
+        </div>
+       </div><button type="submit" id="submitBtn" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-bold text-lg transition-all"> Simpan Kunjungan </button>
+      </form>
+     </div>
+    </div><!-- Visits List Tab -->
+    <div id="contentVisits" class="hidden space-y-4">
+     <div class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Daftar Kunjungan</h2>
+      <div id="visitsList" class="space-y-3">
+       <p class="text-gray-500 text-center py-8">Belum ada data kunjungan</p>
+      </div>
+     </div>
+    </div><!-- Health Program Tab -->
+    <div id="contentHealth" class="hidden space-y-4">
+     <div class="bg-white rounded-lg shadow p-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-3">
+       <h2 class="text-2xl font-bold text-gray-800">Program Kesehatan Ayam Petelur</h2><select id="phaseFilter" onchange="filterPhase(this.value)" class="px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none select-custom"> <option value="all">Semua Fase</option> <option value="Starter">Fase Starter (1-4 minggu)</option> <option value="Grower">Fase Grower (5-17 minggu)</option> <option value="Layer">Fase Layer (Produksi)</option> </select>
+      </div>
+      <div id="healthProgramList" class="space-y-3"></div>
+     </div>
+    </div><!-- Sanitation Tab -->
+    <div id="contentSanitation" class="hidden space-y-4">
+     <div class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Program Desinfeksi &amp; Sanitasi</h2>
+      <div id="sanitationList" class="space-y-3"></div>
+     </div>
+    </div><!-- Disease Tab -->
+    <div id="contentDisease" class="hidden space-y-4">
+     <div class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Penanganan Penyakit</h2>
+      <div id="diseaseList" class="space-y-3"></div>
+     </div>
+    </div>
+   </main>
+  </div><!-- Map Modal -->
+  <div id="mapModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+     <div>
+      <h3 class="text-xl font-bold text-gray-800">Lokasi Kunjungan</h3>
+      <p class="text-sm text-gray-600 mt-1" id="modalAddress"></p>
+      <p class="text-xs text-blue-600 font-mono" id="modalCoordinates"></p>
+     </div><button onclick="closeMap()" class="text-gray-500 hover:text-gray-700 text-2xl">×</button>
+    </div>
+    <div class="flex-1 overflow-hidden"><iframe id="mapFrame" class="w-full h-full" frameborder="0"></iframe>
+    </div>
+   </div>
+  </div><!-- Toast Container -->
+  <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
+  <script>
+    // PWA Install Support
+    let deferredPrompt;
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    // Global state
+    let visits = [];
+    let draftVisits = [];
+    let currentUser = null;
+    let currentTab = 'form';
+    let currentPhaseFilter = 'all';
+    let isOnline = navigator.onLine;
+    let currentLocation = null;
+
+    // Customer data
+    const customers = {
+      '18883': { name: 'TOKO 39', address: 'Samarinda Utara', phone: '081347088411' },
+      '1H392': { name: 'RAIHAN', address: 'Teluk Pandan', phone: '082157307648' },
+      '1C698': { name: 'SUBUR JAYA FARM', address: 'Teluk Pandan', phone: '082254007735' },
+      '1D598': { name: 'MAMMINASAE', address: 'Sangatta', phone: '081351975691' },
+      '12443': { name: 'KAROMAH SAMARINDA', address: 'Marang Kayu', phone: '082189632147' },
+      '19939': { name: 'SARWINDU FARM', address: 'Tenggarong Seberang', phone: '081253595776' },
+      '1C631': { name: 'ACHMAD AFANDI FARM', address: 'Muara Badak', phone: '082157505393' },
+      '1H130': { name: 'PT. AYAM BAROKAH JAYA', address: 'Loa Janan', phone: '081347845339' },
+      '12451': { name: 'PACIFIC JAYA SEJAHTERA', address: 'Samarinda', phone: '085100219026' },
+      '12456': { name: 'UNGGAS JAYA FARM', address: 'Mangkurawang', phone: '085251759509' },
+      '1D020': { name: 'ASTUTY POULTRY SHOP', address: 'Samarinda', phone: '081347748192' },
+      '12438': { name: 'PT. AYAM MAKMUR JAYA', address: 'Teluk Dalam', phone: '081349105185' },
+      '1B945': { name: 'MASI BERSAUDARA', address: 'Melak', phone: '085246710586' },
+      '17813': { name: 'SUSANTO (AUTO) FARM', address: 'Tanah Datar', phone: '082332625187' },
+      '1C256': { name: 'CV. TELUR KITA DUATIGA', address: 'Balikpapan', phone: '' },
+      '1G708': { name: 'EGHY FARM', address: 'Penajam', phone: '08585478410' },
+      '1I494': { name: 'CV. RISKY JAYA ABADI', address: 'Tanjung Batu', phone: '081346395715' },
+      '12426': { name: 'PT. SAPRONAK SATWA SAKTI', address: 'Loa Tebu', phone: '081329685134' },
+      '18357': { name: 'HENDRA FARM', address: 'Prangat', phone: '085317908752' }
+    };
+
+    // Health programs data with day ranges
+    const healthPrograms = [
+      // Fase Starter (Minggu 1-4)
+      { week: 1, day: 1, dayStart: 1, dayEnd: 1, phase: 'Starter', type: 'obat', program: 'Gingertol', product: 'Gingertol', description: '2 ml/liter air minum 2 jam pertama setelah chick in' },
+      { week: 1, day: '1-3', dayStart: 1, dayEnd: 3, phase: 'Starter', type: 'vitamin', program: 'Vitamin Awal', product: 'Vita Chicks/Imustim/Neo Meditril', description: 'Vita Chicks: 5 g/7 liter. Imustim: 0,5-1 ml/2 liter. Neo Meditril: 0,05 ml/kg BB untuk DOC kurang fit' },
+      { week: 1, day: 4, dayStart: 4, dayEnd: 4, phase: 'Starter', type: 'vaksin', program: 'Vaksinasi ND Pertama', product: 'Medivac ND Hitchner B1/Clone 45/ND-IB atau ND G7B Emulsion', description: '1 dosis per ekor (tetes mata/hidung) atau suntik 0,2 ml (subkutan)' },
+      { week: 1, day: '5-6', dayStart: 5, dayEnd: 6, phase: 'Starter', type: 'vitamin', program: 'Pemulihan Post Vaksin', product: 'Strong n Fit/Vita Stress + Imustim', description: 'Strong n Fit: 1 ml/2 liter. Vita Stress: 1 g/liter. Imustim: 0,5-1 ml/2 liter' },
+      { week: 1, day: '7 atau 10', dayStart: 7, dayEnd: 10, phase: 'Starter', type: 'vaksin', program: 'Vaksinasi Gumboro A', product: 'Medivac Gumboro A', description: '1 dosis per ekor (tetes mulut/cekok). Berikan Imustim: 0,5-1 ml/2 liter' },
+      { week: 1, day: '8-9', dayStart: 8, dayEnd: 9, phase: 'Starter', type: 'obat', program: 'Terapi Antibiotik', product: 'Therapy/Doctril/Doxytin + Imustim', description: 'Therapy/Doctril/Doxytin: 0,1 g/kg BB. Imustim: 0,5-1 ml/2 liter' },
+      
+      { week: 2, day: 10, dayStart: 10, dayEnd: 10, phase: 'Starter', type: 'vaksin', program: 'Vaksinasi AI', product: 'Medivac AI', description: 'Suntik 0,2 ml per ekor (subkutan) leher bagian belakang' },
+      { week: 2, day: '11-13', dayStart: 11, dayEnd: 13, phase: 'Starter', type: 'vitamin', program: 'Vitamin Rutin', product: 'Fortevit/Vita Stress + Imustim', description: 'Fortevit: 1 g/6 liter. Vita Stress: 1 g/liter. Imustim: 0,5-1 ml/2 liter' },
+      { week: 2, day: 14, dayStart: 14, dayEnd: 14, phase: 'Starter', type: 'vaksin', program: 'Vaksinasi Gumboro A Ulang', product: 'Medivac Gumboro A', description: '1 dosis per ekor (tetes mulut/cekok)' },
+      
+      { week: 3, day: '15-20', dayStart: 15, dayEnd: 20, phase: 'Starter', type: 'vitamin', program: 'Vitamin Rutin', product: 'Fortevit/Vita Stress + Imustim', description: 'Fortevit: 1 g/6 liter. Vita Stress: 1 g/liter. Imustim: 0,5-1 ml/2 liter' },
+      { week: 3, day: '18-21', dayStart: 18, dayEnd: 21, phase: 'Starter', type: 'vaksin', program: 'Vaksinasi ND La Sota', product: 'Medivac ND La Sota/ND-IB', description: '1 dosis per ekor lewat air minum' },
+      { week: 3, day: '22-23', dayStart: 22, dayEnd: 23, phase: 'Starter', type: 'vitamin', program: 'Vitamin Rutin', product: 'Fortevit/Vita Stress + Imustim', description: 'Fortevit: 1 g/6 liter. Vita Stress: 1 g/liter. Imustim: 0,5-1 ml/2 liter' },
+      { week: 3, day: '24-26', dayStart: 24, dayEnd: 26, phase: 'Starter', type: 'obat', program: 'Terapi Antibiotik', product: 'Trimezyn-S/Therapy', description: 'Trimezyn-S: 0,05-0,1 g/kg BB. Therapy: 0,1 g/kg BB' },
+      
+      { week: 4, day: 27, dayStart: 27, dayEnd: 27, phase: 'Starter', type: 'vitamin', program: 'Vitamin Rutin', product: 'Fortevit/Vita Stress + Imustim', description: 'Fortevit: 1 g/6 liter. Vita Stress: 1 g/liter. Imustim: 0,5-1 ml/2 liter' },
+      { week: 4, day: 28, dayStart: 28, dayEnd: 28, phase: 'Grower', type: 'vaksin', program: 'Vaksinasi Gumboro A/B', product: 'Medivac Gumboro A/B', description: '1 dosis per ekor lewat air minum' },
+      
+      // Fase Grower (Minggu 5-17)
+      { week: 5, day: 32, dayStart: 32, dayEnd: 32, phase: 'Grower', type: 'obat', program: 'Obat Cacing', product: 'Levamid/Vermixon', description: 'Levamid: 0,2 g/kg BB (campur ransum, 2-4 jam). Vermixon: 15 ml/3 liter air untuk 50 ekor' },
+      
+      { week: 6, day: 42, dayStart: 42, dayEnd: 42, phase: 'Grower', type: 'vaksin', program: 'Vaksinasi Coryza', product: 'Medivac Coryza B/T/T Suspension/ND-Coryza Emulsion', description: 'Suntik 0,5 ml (intramuskuler) dada/paha. Berikan Imustim: 0,5-1 ml/2 liter' },
+      
+      { week: 7, day: 49, dayStart: 49, dayEnd: 49, phase: 'Grower', type: 'vaksin', program: 'Vaksinasi AI Kedua', product: 'Medivac AI', description: 'Suntik 0,5 ml per ekor (intramuskuler) dada' },
+      
+      { week: 8, day: 56, dayStart: 56, dayEnd: 56, phase: 'Grower', type: 'vaksin', program: 'Vaksinasi ND + Top Mix', product: 'Medivac ND La Sota/ND-IB + Top Mix', description: 'Vaksin: 1 dosis (air minum) atau + suntik 0,5 ml emulsi. Top Mix: 2-4 g/1 kg ransum (mulai umur 56 hari)' },
+      
+      { week: 10, day: 72, dayStart: 72, dayEnd: 72, phase: 'Grower', type: 'vaksin', program: 'Vaksinasi Pox & ILT', product: 'Medivac Pox/AE-Pox + Medivac ILT', description: 'Pox: 1 dosis (tusuk sayap). ILT: 1 dosis (tetes mata)' },
+      
+      { week: 13, day: 86, dayStart: 86, dayEnd: 86, phase: 'Grower', type: 'vaksin', program: 'Vaksinasi ND La Sota', product: 'Medivac ND La Sota/ND-IB', description: '1 dosis per ekor lewat air minum. Berikan Fortevit/Vita Stress/Imustim' },
+      
+      { week: 14, day: 94, dayStart: 94, dayEnd: 94, phase: 'Grower', type: 'obat', program: 'Obat Cacing Kedua', product: 'Levamid/Vermixon', description: 'Levamid: 0,2 g/kg BB (campur ransum). Vermixon: 15 ml/3 liter air untuk 50 ekor. Berikan Fortevit/Vita Stress' },
+      
+      { week: 15, day: 105, dayStart: 105, dayEnd: 105, phase: 'Grower', type: 'vaksin', program: 'Vaksinasi Coryza/EDS', product: 'Medivac Coryza B/T/T/ND G7B-EDS Emulsion', description: 'Suntik 0,5 ml per ekor (intramuskuler) dada/paha. Berikan Fortevit/Vita Stress/Imustim' },
+      
+      { week: 17, day: 119, dayStart: 119, dayEnd: 119, phase: 'Grower', type: 'vaksin', program: 'Vaksinasi AI Ketiga', product: 'Medivac AI', description: 'Suntik 0,5 ml per ekor (intramuskuler) dada/paha' },
+      
+      // Fase Layer (Produksi)
+      { week: '-', day: '-', dayStart: 140, dayEnd: 999, phase: 'Layer', type: 'vaksin', program: 'Vaksinasi Ulang ND & IB', product: 'Medivac ND La Sota/ND-IB', description: 'Tiap 1-3 bulan (vaksin aktif) atau 3-6 bulan (vaksin inaktif). Monitoring titer antibodi setiap bulan' },
+      { week: '32-34', day: '-', dayStart: 224, dayEnd: 238, phase: 'Layer', type: 'vaksin', program: 'Vaksinasi AI Keempat', product: 'Medivac AI', description: 'Umur 32-34 minggu atau 2 minggu setelah puncak produksi. Suntik 0,5 ml (intramuskuler)' },
+      { week: '47-49', day: '-', dayStart: 329, dayEnd: 343, phase: 'Layer', type: 'vaksin', program: 'Vaksinasi AI Kelima', product: 'Medivac AI', description: 'Umur 47-49 minggu atau 15 minggu setelah vaksinasi AI ke-4. Suntik 0,5 ml (intramuskuler)' },
+      { week: '-', day: '-', dayStart: 140, dayEnd: 999, phase: 'Layer', type: 'obat', program: 'Obat Cacing Rutin', product: 'Levamid/Vermixon', description: 'Setiap 3 bulan sekali. Sebaiknya dilakukan uji feses untuk memeriksa telur cacing' }
+    ];
+
+    // Sanitation programs
+    const sanitationPrograms = [
+      { activity: 'Persiapan Kandang', frequency: '1 kali sebelum chick in', product: 'Formades, Sporades, Medisep, Insektisida, Delatrin, Neo Antisep' },
+      { activity: 'Membasmi Kutu Franky', frequency: '1 kali ketika persiapan kandang', product: 'Delatrin' },
+      { activity: 'Dipping Kaki (Celup)', frequency: 'Setiap saat ketika akan masuk kandang', product: 'Antisep' },
+      { activity: 'Sanitasi Air Minum', frequency: '3 hari antiseptik, 2 hari air biasa (berulang)', product: 'Desinsep' },
+      { activity: 'Sanitasi Peralatan', frequency: '3-4 hari sekali', product: 'Medisep' },
+      { activity: 'Semprot Kandang Rutin', frequency: '2 kali seminggu', product: 'Neo Antisep, Medisep, Zaldes' },
+      { activity: 'Mengurangi Bau Amonia', frequency: 'Setiap hari (terutama umur 22+ minggu)', product: 'Ammotrol' },
+      { activity: 'Memperbaiki Kualitas Air', frequency: 'Sebelum vaksinasi atau melarutkan obat/vitamin', product: 'Medimilk, Netrabil' }
+    ];
+
+    // Disease management
+    const diseaseManagement = {
+      'AI (Flu Burung)': {
+        treatment: 'Tidak bisa diobati',
+        support: 'Fortevit dan Imustim untuk terapi suportif',
+        emergency: 'Lakukan vaksinasi darurat dengan Medivac AI'
+      },
+      'ND (Newcastle Disease)': {
+        treatment: 'Tidak bisa diobati',
+        support: 'Fortevit dan Imustim untuk terapi suportif',
+        emergency: 'Lakukan vaksinasi darurat dengan Medivac ND Clone 45'
+      },
+      'Gumboro, EDS, IB, ILT, Cacar': {
+        treatment: 'Tidak bisa diobati',
+        support: 'Fortevit, Imustim, Egg Stimulant, Kumavit, Gumbonal, air gula',
+        emergency: 'Berikan vitamin dan imunostimulan segera'
+      },
+      'Korisa (Snot)': {
+        treatment: 'Ringan: Amoxitin/Proxan S/Trimezyn-S via air minum + Respitoran. Berat: Gentamin/Vet Strep/Neo Meditril Injeksi via suntik + Respitoran',
+        support: 'Respitoran untuk membantu pernapasan',
+        emergency: 'Pisahkan ayam sakit, tingkatkan ventilasi kandang'
+      },
+      'CRD/CRD Kompleks': {
+        treatment: 'Neo Meditril, Therapy, atau Doxyvet',
+        support: 'Kombinasi dengan Respitoran',
+        emergency: 'Isolasi ayam sakit, perbaiki sanitasi kandang'
+      },
+      'Kolera': {
+        treatment: 'Koleridin, Ampicol, atau Collimezyn',
+        support: 'Vitamin dan elektrolit untuk pemulihan',
+        emergency: 'Desinfeksi kandang segera, pisahkan ayam sakit'
+      },
+      'Cacingan': {
+        treatment: 'Levamid atau Vermizyn',
+        support: 'Uji feses rutin untuk deteksi dini',
+        emergency: 'Berikan obat cacing setiap 3 bulan'
+      },
+      'Koksidiosis': {
+        treatment: 'Toltradex, Coxy, atau AntiKoksi',
+        support: 'Jaga kebersihan litter dan air minum',
+        emergency: 'Pisahkan ayam sakit, ganti litter basah'
+      }
+    };
+
+    // Online/offline detection
+    window.addEventListener('online', () => {
+      isOnline = true;
+      updateOnlineStatus();
+      syncDrafts();
+    });
+
+    window.addEventListener('offline', () => {
+      isOnline = false;
+      updateOnlineStatus();
+    });
+
+    // Update online status UI
+    function updateOnlineStatus() {
+      const statusEl = document.getElementById('onlineStatus');
+      if (isOnline) {
+        statusEl.innerHTML = '<span class="w-2 h-2 bg-green-500 rounded-full"></span><span class="text-gray-700 font-medium">Online</span>';
+      } else {
+        statusEl.innerHTML = '<span class="w-2 h-2 bg-red-500 rounded-full"></span><span class="text-gray-700 font-medium">Offline</span>';
+      }
+    }
+
+    // Login
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+
+      if (username === 'wsr66' && password === 'medion2025') {
+        currentUser = { username, name: 'WSR66 Kalimantan Timur' };
+        localStorage.setItem('medionUser', JSON.stringify(currentUser));
+        showApp();
+      } else {
+        showToast('Username atau password salah', 'error');
+      }
+    });
+
+    // Logout
+    function logout() {
+      localStorage.removeItem('medionUser');
+      currentUser = null;
+      document.getElementById('loginScreen').classList.remove('hidden');
+      document.getElementById('mainApp').classList.add('hidden');
+      document.getElementById('loginForm').reset();
+    }
+
+    // Check login
+    function checkLogin() {
+      const savedUser = localStorage.getItem('medionUser');
+      if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+        showApp();
+      }
+    }
+
+    // Show main app
+    function showApp() {
+      document.getElementById('loginScreen').classList.add('hidden');
+      document.getElementById('mainApp').classList.remove('hidden');
+      document.getElementById('userInfo').textContent = currentUser.name;
+    }
+
+    // Switch tabs
+    function switchTab(tab) {
+      currentTab = tab;
+      
+      // Hide all content
+      document.querySelectorAll('[id^="content"]').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('[id^="tab"]').forEach(el => {
+        el.classList.remove('tab-active');
+        el.classList.add('text-gray-600', 'hover:bg-gray-50');
+      });
+      
+      // Show selected content
+      document.getElementById('content' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.remove('hidden');
+      const activeTab = document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1));
+      activeTab.classList.add('tab-active');
+      activeTab.classList.remove('text-gray-600', 'hover:bg-gray-50');
+    }
+
+    // Fill customer data
+    function fillCustomerData() {
+      const customerId = document.getElementById('customerId').value;
+      const customerInfo = document.getElementById('customerInfo');
+      
+      if (customerId && customers[customerId]) {
+        const customer = customers[customerId];
+        
+        // Show customer info
+        customerInfo.style.display = 'block';
+        document.getElementById('infoNama').textContent = customer.name;
+        document.getElementById('infoAlamat').textContent = customer.address;
+        document.getElementById('infoTelepon').textContent = customer.phone || '-';
+        
+        // Clear kandang fields
+        document.getElementById('namaKandang').value = '';
+        document.getElementById('namaPeternak').value = '';
+        document.getElementById('nomorPeternak').value = '';
+        document.getElementById('alamatKandang').value = '';
+      } else {
+        customerInfo.style.display = 'none';
+      }
+    }
+
+    // Get location
+    function getLocation() {
+      const btn = document.getElementById('locationBtn');
+      const locationInfo = document.getElementById('locationInfo');
+      const latInput = document.getElementById('latitude');
+      const lngInput = document.getElementById('longitude');
+      
+      btn.disabled = true;
+      btn.innerHTML = 'Mengambil lokasi...';
+      
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude.toFixed(6);
+            const lng = position.coords.longitude.toFixed(6);
+            
+            latInput.value = lat;
+            lngInput.value = lng;
+            
+            document.getElementById('coordinates').textContent = `${lat}, ${lng}`;
+            locationInfo.classList.remove('hidden');
+            btn.innerHTML = 'Lokasi Tersimpan';
+            btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            btn.classList.add('bg-green-600', 'hover:bg-green-700');
+            showToast('Lokasi berhasil diambil', 'success');
+            
+            btn.disabled = false;
+          },
+          (error) => {
+            btn.disabled = false;
+            btn.innerHTML = 'Gunakan Lokasi Saat Ini';
+            showToast('Gagal mengambil lokasi. Pastikan GPS aktif.', 'error');
+          }
+        );
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = 'Gunakan Lokasi Saat Ini';
+        showToast('Browser tidak mendukung geolocation', 'error');
+      }
+    }
+
+    // Preview map
+    function previewMap() {
+      const lat = document.getElementById('latitude').value;
+      const lng = document.getElementById('longitude').value;
+      
+      if (!lat || !lng) {
+        showToast('Masukkan koordinat terlebih dahulu', 'error');
+        return;
+      }
+
+      const farmName = document.getElementById('namaKandang').value || 'Lokasi Kandang';
+      const address = document.getElementById('alamatKandang').value || '';
+      
+      openMapForVisit(parseFloat(lat), parseFloat(lng), farmName, address);
+    }
+
+    // Submit visit form
+    document.getElementById('visitForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const lat = document.getElementById('latitude').value;
+      const lng = document.getElementById('longitude').value;
+      
+      if (!lat || !lng) {
+        showToast('Silakan masukkan koordinat atau gunakan lokasi saat ini', 'error');
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Menyimpan...';
+
+      const visitData = {
+        customer_id: document.getElementById('customerId').value,
+        petugas_lapangan: document.getElementById('namaField').value,
+        kode_sales: document.getElementById('kodeSales').value,
+        nama_kandang: document.getElementById('namaKandang').value,
+        nama_peternak: document.getElementById('namaPeternak').value,
+        nomor_peternak: document.getElementById('nomorPeternak').value,
+        alamat_kandang: document.getElementById('alamatKandang').value,
+        populasi: parseInt(document.getElementById('populasi').value),
+        umur_ayam: parseInt(document.getElementById('umurAyam').value),
+        catatan: document.getElementById('catatan').value,
+        latitude: parseFloat(lat),
+        longitude: parseFloat(lng),
+        timestamp: new Date().toISOString()
+      };
+
+      if (isOnline && window.dataSdk) {
+        const result = await window.dataSdk.create(visitData);
+        
+        if (result.isOk) {
+          showToast('Kunjungan berhasil disimpan!', 'success');
+          document.getElementById('visitForm').reset();
+          document.getElementById('locationInfo').classList.add('hidden');
+          document.getElementById('customerInfo').style.display = 'none';
+          document.getElementById('healthRecommendations').classList.add('hidden');
+          const locationBtn = document.getElementById('locationBtn');
+          locationBtn.innerHTML = 'Gunakan Lokasi Saat Ini';
+          locationBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+          locationBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+        } else {
+          showToast('Gagal menyimpan: ' + result.error.message, 'error');
+        }
+      } else {
+        // Save to draft
+        draftVisits.push({ ...visitData, id: Date.now().toString() });
+        localStorage.setItem('medionDrafts', JSON.stringify(draftVisits));
+        updateDraftStatus();
+        showToast('Disimpan sebagai draft (offline)', 'info');
+        document.getElementById('visitForm').reset();
+        document.getElementById('locationInfo').classList.add('hidden');
+        document.getElementById('customerInfo').style.display = 'none';
+        document.getElementById('healthRecommendations').classList.add('hidden');
+        const locationBtn = document.getElementById('locationBtn');
+        locationBtn.innerHTML = 'Gunakan Lokasi Saat Ini';
+        locationBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+        locationBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Simpan Kunjungan';
+    });
+
+    // Sync drafts
+    async function syncDrafts() {
+      if (!isOnline || draftVisits.length === 0 || !window.dataSdk) return;
+
+      showToast('Menyinkronkan draft...', 'info');
+
+      for (const draft of draftVisits) {
+        const { id, ...visitData } = draft;
+        const result = await window.dataSdk.create(visitData);
+        
+        if (result.isOk) {
+          draftVisits = draftVisits.filter(d => d.id !== id);
+        }
+      }
+
+      localStorage.setItem('medionDrafts', JSON.stringify(draftVisits));
+      updateDraftStatus();
+      
+      if (draftVisits.length === 0) {
+        showToast('Semua draft berhasil disinkronkan', 'success');
+      }
+    }
+
+    // Update draft status
+    function updateDraftStatus() {
+      const draftStatus = document.getElementById('draftStatus');
+      const draftCount = document.getElementById('draftCount');
+      
+      if (draftVisits.length > 0) {
+        draftStatus.classList.remove('hidden');
+        draftCount.textContent = draftVisits.length;
+      } else {
+        draftStatus.classList.add('hidden');
+      }
+    }
+
+    // Render visits list
+    function renderVisits() {
+      const container = document.getElementById('visitsList');
+      
+      if (visits.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">Belum ada data kunjungan</p>';
+        return;
+      }
+
+      container.innerHTML = visits.map(visit => {
+        const customer = customers[visit.customer_id];
+        const customerName = customer ? customer.name : 'N/A';
+        
+        return `
+        <div class="border border-gray-200 rounded-lg p-4 bg-white hover:shadow-md transition-all">
+          <div class="flex items-start justify-between mb-3">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">PELANGGAN</span>
+                <span class="text-xs text-gray-500">${visit.customer_id}</span>
+              </div>
+              <h3 class="font-bold text-base text-gray-800">${customerName}</h3>
+              <div class="mt-2 pl-3 border-l-2 border-yellow-400">
+                <p class="text-sm font-semibold text-yellow-700">Kandang: ${visit.nama_kandang}</p>
+                <p class="text-xs text-gray-600">Peternak: ${visit.nama_peternak}</p>
+              </div>
+              <p class="text-xs text-blue-600 font-semibold mt-2">Petugas: ${visit.petugas_lapangan} (${visit.kode_sales})</p>
+            </div>
+            <button onclick="deleteVisit('${visit.__backendId}')" 
+                    class="text-red-600 hover:text-red-800 text-sm font-semibold px-3 py-1 rounded hover:bg-red-50">
+              Hapus
+            </button>
+          </div>
+          
+          <div class="space-y-1 text-sm text-gray-700 mb-3 bg-gray-50 p-3 rounded">
+            <p><strong>Alamat Kandang:</strong> ${visit.alamat_kandang}</p>
+            <p><strong>Telp Peternak:</strong> ${visit.nomor_peternak}</p>
+            <p><strong>Populasi:</strong> ${visit.populasi.toLocaleString()} ekor | <strong>Umur:</strong> ${visit.umur_ayam} hari</p>
+            ${visit.catatan ? `<p class="text-gray-600 italic mt-2"><strong>Catatan:</strong> ${visit.catatan}</p>` : ''}
+            <p class="text-xs text-gray-500 mt-2">${new Date(visit.timestamp).toLocaleString('id-ID')}</p>
+          </div>
+          
+          <button onclick="openMapForVisit(${visit.latitude}, ${visit.longitude}, '${visit.nama_kandang.replace(/'/g, "\\'")}', '${visit.alamat_kandang.replace(/'/g, "\\'")}')"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition-all">
+            Lihat Lokasi di Peta
+          </button>
+        </div>
+      `;
+      }).join('');
+    }
+
+    // Delete visit
+    async function deleteVisit(backendId) {
+      const visit = visits.find(v => v.__backendId === backendId);
+      if (!visit) return;
+
+      const deleteBtn = event.target;
+      const originalText = deleteBtn.innerHTML;
+      deleteBtn.innerHTML = 'Menghapus...';
+      deleteBtn.disabled = true;
+
+      const result = await window.dataSdk.delete(visit);
+      
+      if (!result.isOk) {
+        showToast('Gagal menghapus kunjungan', 'error');
+        deleteBtn.disabled = false;
+        deleteBtn.innerHTML = originalText;
+      } else {
+        showToast('Kunjungan berhasil dihapus', 'success');
+      }
+    }
+
+    // Check health programs based on chicken age
+    function checkHealthPrograms() {
+      const umurAyam = parseInt(document.getElementById('umurAyam').value);
+      const recommendationsDiv = document.getElementById('healthRecommendations');
+      const recommendationList = document.getElementById('recommendationList');
+      
+      if (!umurAyam || umurAyam < 1) {
+        recommendationsDiv.classList.add('hidden');
+        return;
+      }
+
+      // Find programs that match the current age (±2 days tolerance)
+      const tolerance = 2;
+      const matchingPrograms = healthPrograms.filter(program => {
+        if (program.dayStart && program.dayEnd) {
+          return umurAyam >= (program.dayStart - tolerance) && 
+                 umurAyam <= (program.dayEnd + tolerance);
+        }
+        return false;
+      });
+
+      if (matchingPrograms.length > 0) {
+        recommendationsDiv.classList.remove('hidden');
+        
+        recommendationList.innerHTML = matchingPrograms.map(program => {
+          const typeClass = program.type === 'vaksin' ? 'badge-vaksin' : 
+                           program.type === 'vitamin' ? 'badge-vitamin' : 
+                           program.type === 'obat' ? 'badge-obat' : 'badge-sanitasi';
+          const typeLabel = program.type === 'vaksin' ? 'VAKSINASI' : 
+                           program.type === 'vitamin' ? 'VITAMIN' : 'OBAT';
+          
+          const dayText = program.dayStart === program.dayEnd ? 
+                         `Hari ke-${program.dayStart}` : 
+                         `Hari ke-${program.dayStart} sampai ${program.dayEnd}`;
+          
+          let statusBadge = '';
+          let statusText = '';
+          if (umurAyam >= program.dayStart && umurAyam <= program.dayEnd) {
+            statusBadge = 'bg-green-100 text-green-700 border-green-300';
+            statusText = 'WAKTUNYA SEKARANG';
+          } else if (umurAyam < program.dayStart) {
+            statusBadge = 'bg-yellow-100 text-yellow-700 border-yellow-300';
+            statusText = 'SEGERA';
+          } else {
+            statusBadge = 'bg-orange-100 text-orange-700 border-orange-300';
+            statusText = 'TERLAMBAT';
+          }
+          
+          return `
+            <div class="bg-white border-2 border-blue-200 rounded-lg p-4 shadow-sm">
+              <div class="flex items-start justify-between mb-2">
+                <div class="flex-1">
+                  <div class="flex items-center space-x-2 mb-1">
+                    <span class="px-2 py-1 rounded text-xs font-bold ${typeClass} text-white">
+                      ${typeLabel}
+                    </span>
+                  </div>
+                  <h4 class="font-bold text-gray-800">${program.program}</h4>
+                  <p class="text-xs text-blue-600 font-semibold mt-1">${program.product}</p>
+                </div>
+                <span class="px-2 py-1 rounded-lg text-xs font-bold bg-blue-100 text-blue-700 whitespace-nowrap ml-2">
+                  ${dayText}
+                </span>
+              </div>
+              <p class="text-sm text-gray-700 mt-2">${program.description}</p>
+              <div class="mt-3 flex items-center space-x-2">
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded font-medium">
+                  Fase ${program.phase}
+                </span>
+                <span class="px-2 py-1 ${statusBadge} text-xs rounded font-semibold border">${statusText}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } else {
+        recommendationsDiv.classList.add('hidden');
+      }
+    }
+
+    // Filter health programs by phase
+    function filterPhase(phase) {
+      currentPhaseFilter = phase;
+      renderHealthPrograms();
+    }
+
+    // Render health programs
+    function renderHealthPrograms() {
+      const container = document.getElementById('healthProgramList');
+      
+      let filteredPrograms = healthPrograms;
+      if (currentPhaseFilter !== 'all') {
+        filteredPrograms = healthPrograms.filter(p => p.phase === currentPhaseFilter);
+      }
+
+      container.innerHTML = filteredPrograms.map(program => {
+        const typeClass = program.type === 'vaksin' ? 'badge-vaksin' : 
+                         program.type === 'vitamin' ? 'badge-vitamin' : 'badge-obat';
+        const typeLabel = program.type === 'vaksin' ? 'VAKSINASI' : 
+                         program.type === 'vitamin' ? 'VITAMIN' : 'OBAT';
+        
+        return `
+          <div class="border-2 border-gray-200 rounded-xl p-5 hover:shadow-lg transition-all bg-white">
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex-1">
+                <div class="mb-2">
+                  <span class="px-3 py-1 rounded text-xs font-bold ${typeClass} text-white inline-block">
+                    ${typeLabel}
+                  </span>
+                </div>
+                <h3 class="font-bold text-gray-800 mb-2 text-lg">${program.program}</h3>
+                <p class="text-sm text-blue-600 font-semibold">${program.product}</p>
+              </div>
+              <div class="text-right">
+                <span class="px-3 py-2 rounded-lg text-sm font-bold bg-blue-100 text-blue-700 inline-block">
+                  Minggu ${program.week}
+                </span>
+                ${program.day && program.day !== '-' ? `<div class="text-xs text-gray-500 mt-2 font-medium">Hari ${program.day}</div>` : ''}
+              </div>
+            </div>
+            <p class="text-sm text-gray-700 mb-3 leading-relaxed">${program.description}</p>
+            <span class="inline-block px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 text-xs rounded-lg font-medium border border-gray-200">
+              Fase ${program.phase}
+            </span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render sanitation programs
+    function renderSanitationPrograms() {
+      const container = document.getElementById('sanitationList');
+      container.innerHTML = sanitationPrograms.map(item => `
+        <div class="border-2 border-blue-200 rounded-xl p-5 bg-gradient-to-br from-blue-50 to-white hover:shadow-lg transition-all">
+          <div class="flex-1">
+            <div class="mb-2">
+              <span class="px-3 py-1 rounded text-xs font-bold badge-sanitasi text-white inline-block">
+                SANITASI
+              </span>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2 text-lg">${item.activity}</h3>
+            <div class="space-y-1">
+              <p class="text-sm text-blue-600 font-semibold"><span class="text-gray-600">Frekuensi:</span> ${item.frequency}</p>
+              <p class="text-sm text-gray-700"><span class="font-semibold">Produk:</span> ${item.product}</p>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render disease management
+    function renderDiseaseManagement() {
+      const container = document.getElementById('diseaseList');
+      container.innerHTML = Object.entries(diseaseManagement).map(([disease, info]) => `
+        <div class="border-2 border-red-200 rounded-xl p-5 bg-gradient-to-br from-red-50 to-white hover:shadow-lg transition-all">
+          <div class="flex-1">
+            <div class="mb-2">
+              <span class="px-3 py-1 rounded text-xs font-bold bg-red-600 text-white inline-block">
+                PENYAKIT
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-gray-800 mb-3">${disease}</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-white p-3 rounded-lg border border-red-100">
+                <strong class="text-red-700">Pengobatan:</strong>
+                <p class="mt-1 text-gray-700">${info.treatment}</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg border border-blue-100">
+                <strong class="text-blue-700">Terapi Suportif:</strong>
+                <p class="mt-1 text-gray-700">${info.support}</p>
+              </div>
+              <div class="bg-white p-3 rounded-lg border border-orange-100">
+                <strong class="text-orange-700">Tindakan Darurat:</strong>
+                <p class="mt-1 text-gray-700">${info.emergency}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Update visit count
+    function updateVisitCount() {
+      document.getElementById('visitCount').textContent = visits.length;
+    }
+
+    // Show toast
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      const bgColor = type === 'success' ? 'bg-green-500' : 
+                     type === 'error' ? 'bg-red-500' : 'bg-blue-500';
+      
+      toast.className = `toast ${bgColor} text-white px-6 py-4 rounded-xl shadow-lg max-w-sm`;
+      toast.textContent = message;
+      
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-10px)';
+        toast.style.transition = 'all 0.3s';
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    // Open map modal
+    function openMapForVisit(lat, lng, farmName, address) {
+      const modal = document.getElementById('mapModal');
+      const mapFrame = document.getElementById('mapFrame');
+      const coordinatesDisplay = document.getElementById('modalCoordinates');
+      const addressDisplay = document.getElementById('modalAddress');
+
+      const mapUrl = `https://maps.google.com/maps?q=${lat},${lng}&hl=id&z=16&output=embed`;
+      mapFrame.src = mapUrl;
+
+      coordinatesDisplay.textContent = `${lat}, ${lng}`;
+      addressDisplay.textContent = `${farmName} - ${address}`;
+
+      modal.classList.remove('hidden');
+    }
+
+    // Close map modal
+    function closeMap() {
+      const modal = document.getElementById('mapModal');
+      const mapFrame = document.getElementById('mapFrame');
+      mapFrame.src = '';
+      modal.classList.add('hidden');
+    }
+
+    // Data SDK handler
+    const dataHandler = {
+      onDataChanged(data) {
+        visits = data;
+        renderVisits();
+        updateVisitCount();
+      }
+    };
+
+    // Initialize app
+    async function initializeApp() {
+      // Load drafts
+      const savedDrafts = localStorage.getItem('medionDrafts');
+      if (savedDrafts) {
+        draftVisits = JSON.parse(savedDrafts);
+        updateDraftStatus();
+      }
+
+      // Initialize Data SDK
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          console.error('Failed to initialize Data SDK');
+        }
+      }
+
+      // Render static content
+      renderHealthPrograms();
+      renderSanitationPrograms();
+      renderDiseaseManagement();
+      updateOnlineStatus();
+
+      // Sync drafts if online
+      if (isOnline && draftVisits.length > 0) {
+        setTimeout(syncDrafts, 2000);
+      }
+    }
+
+    // Check login on load
+    checkLogin();
+    initializeApp();
+
+    // Auto-sync drafts every 5 minutes
+    setInterval(() => {
+      if (isOnline && draftVisits.length > 0) {
+        syncDrafts();
+      }
+    }, 300000);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b06c0c1542cd7ad',t:'MTc2NjE0NTc2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
