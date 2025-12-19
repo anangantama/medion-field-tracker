@@ -12,8 +12,6 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231e40af'/%3E%3Cpath d='M15 75 L15 25 L30 25 L50 55 L70 25 L85 25 L85 75 L75 75 L75 42 L50 72 L25 42 L25 75 Z' fill='white'/%3E%3C/svg%3E"><!-- Favicon PNG fallback untuk browser lama -->
   <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2ElEQVR4nO2WMQ6DMAxFnwMXYOkVOEO7dqTiDBm6deYIXIErMHbpBVj6JVciEiWAHUdqEf+TLGXwt/2dGKUkSfpLAK4A7gCeAN4GZs/5AuBhkN8BXHoBYAngYZR/AVj2AmBulJ8BzHoAMDfKTwDmhvlF9wCObgHsHL6qW0Z10wOAnSuA3NWSO4Z3PQE4ujp6V7cOBzjqEcDBAYCtBwBbBwB2HgDsHBxR7wHAXrNIpf3Zvfuu7v1LW+2/L9h+A1jrNzir32Ktvou3+i/i6t+Iu38nvnEH8kqS1KO+AO48RKXqZgqCAAAAAElFTkSuQmCC"><!-- Apple Touch Icon -->
   <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAACXBIWXMAAAsTAAALEwEAmpwYAAADiElEQVR4nO3cS2gTURTG8f9NbWt8tFofqKAiPkAQd6KgiBsFQVy4ERciblxUcOdC3LgRNy5EcCGCCxciCCIIoguxCxEEQRQRRPCBj1qtWq21tf5yISGTZibJJDPJzOSeAwNtcif3fvd+uTOTm4RSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVSqrA2UDQB7gGlgFTgOXAbmgJ+BxafALeCSvNYsec8U8FTe85287ziwW7ZVsngDcBgYB74CT4AvwBfgD/A7YHnz3Bv5jI/Ac2BMticyZ4AWoBuYBF4CHwk+0OnMa2V7urMc/BqgD7gGfCzhoKczv5Pt68/LAOqBYeBlCQc6nemNbHt9XgawHbiS48CnM6+VbbU7yL0AtgFnq/SLT+dCsW3IcgD1wAWqh+mNbHu9gwG0ANeqNPCpzHV5DacDaJNfrVIim97Ity90AWTS1lWZD55Nb2S7XXUAzSV+Xr2W7W8OqgMYKHHAU5l+twPor/KAp+t3O4CBKg94uoHYA1gHPA/5OL+QbV8X2k7QemBzgW0qhT3ANqIygMbQz/rFZ4C6WLYAc8D3kHpN2fK5Uvex6wTtCnGQfwL7KOIAtiJk0wk6HuJGvQfaSWAA+yh+J+gcOchmJ2gmxI16CezPUwD7KW4n6HS+AjgbYlDDpHgAw4TR4e8CbsY8gFEXAcy4COB6zAO47iKAWy4GsMdBAAO5DqAxpM4OQAfwJuYBvHERQH1I5x+s6gCGqM4AVvMyANPPtXPgNIZxBBgjYXaE1BmywQHsBFZCOi9sNh9dTph+QjoHsD/kM2xQBtBbyutWu4HlkDtZu4CdZOcA9lH8TtAp8ugESoYQOns7gXvRCWAP8CLE+/w+4CjZdYKOUfxO0CnysAtoAmZD7Ohccp/RiZCbISfI0w5gZYidoZ+hNoqcDoVwnt/sIE8HUEvsTO0iKE1t5Pm0iLbYBdApvd9BtXqvTqdKfRaW4rRYqZOsb8B1ct+/fVNOvKoiiJUQm7M2gGryXO6kVkMAFwlvSsVWoN/BwPuBlcg9vw/oJSedoBZgKUcBLAHtRKgT1B5yR+dxiDtBPRRxEDQIvIhBAC+AfkJu9raFeLx/lm2b8lsC3ka4b/w2xGbvTomg15Nv86MQAjgLrIcY7Lq8lir1W/hU7vNT2eb1AAM+7iCA1YBB/gEabLKPMaF2YAAAAABJRU5ErkJggg==">
-  <script src="/_sdk/data_sdk.js"></script>
-  <script src="/_sdk/element_sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -625,27 +623,50 @@ document.getElementById('visitForm').addEventListener('submit', async (e) => {
   submitBtn.innerHTML = 'Simpan Kunjungan';
 });
     // Sync drafts
-    async function syncDrafts() {
-      if (!isOnline || draftVisits.length === 0 || !window.dataSdk) return;
+async function syncDrafts() {
+  if (!isOnline || draftVisits.length === 0) return;
 
-      showToast('Menyinkronkan draft...', 'info');
+  showToast('Menyinkronkan draft...', 'info');
 
-      for (const draft of draftVisits) {
-        const { id, ...visitData } = draft;
-        const result = await window.dataSdk.create(visitData);
-        
-        if (result.isOk) {
-          draftVisits = draftVisits.filter(d => d.id !== id);
-        }
+  const API_URL = "https://script.google.com/macros/s/AKfycbztSl3UES78xUakCSXHF1T2Iq8izmM96ripwAKVllsO7EVt9OQRGvv7Ab6nZ62Zr_Mm/exec";
+
+  const remainingDrafts = [];
+
+  for (const draft of draftVisits) {
+    const { id, ...visitData } = draft;
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(visitData)
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error("Gagal sync");
       }
 
-      localStorage.setItem('medionDrafts', JSON.stringify(draftVisits));
-      updateDraftStatus();
-      
-      if (draftVisits.length === 0) {
-        showToast('Semua draft berhasil disinkronkan', 'success');
-      }
+    } catch (err) {
+      console.error("Draft gagal disinkron:", err);
+      remainingDrafts.push(draft); // simpan lagi kalau gagal
     }
+  }
+
+  draftVisits = remainingDrafts;
+  localStorage.setItem("medionDrafts", JSON.stringify(draftVisits));
+  updateDraftStatus();
+
+  if (draftVisits.length === 0) {
+    showToast("Semua draft berhasil disinkronkan", "success");
+  } else {
+    showToast("Sebagian draft belum tersinkron", "error");
+  }
+}
+
 
     // Update draft status
     function updateDraftStatus() {
@@ -1013,4 +1034,5 @@ document.getElementById('visitForm').addEventListener('submit', async (e) => {
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b06c0c1542cd7ad',t:'MTc2NjE0NTc2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
+
 
