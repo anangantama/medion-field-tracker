@@ -565,73 +565,65 @@
     }
 
     // Submit visit form
-    document.getElementById('visitForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const lat = document.getElementById('latitude').value;
-      const lng = document.getElementById('longitude').value;
-      
-      if (!lat || !lng) {
-        showToast('Silakan masukkan koordinat atau gunakan lokasi saat ini', 'error');
-        return;
+document.getElementById('visitForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const lat = document.getElementById('latitude').value;
+  const lng = document.getElementById('longitude').value;
+
+  if (!lat || !lng) {
+    showToast('Silakan masukkan koordinat atau gunakan lokasi saat ini', 'error');
+    return;
+  }
+
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Menyimpan...';
+
+  const visitData = {
+    customer_id: document.getElementById('customerId').value,
+    petugas_lapangan: document.getElementById('namaField').value,
+    kode_sales: document.getElementById('kodeSales').value,
+    nama_kandang: document.getElementById('namaKandang').value,
+    nama_peternak: document.getElementById('namaPeternak').value,
+    nomor_peternak: document.getElementById('nomorPeternak').value,
+    alamat_kandang: document.getElementById('alamatKandang').value,
+    populasi: document.getElementById('populasi').value,
+    umur_ayam: document.getElementById('umurAyam').value,
+    catatan: document.getElementById('catatan').value,
+    latitude: lat,
+    longitude: lng,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbwdx-aR9AryxeZ3z44O1wjuBOD1Z5tDLRaKDRXQZvFTaQLysZGQ1FCcwRjDDeJ6t-GS/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(visitData)
       }
+    );
 
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Menyimpan...';
+    await response.json();
 
-      const visitData = {
-        customer_id: document.getElementById('customerId').value,
-        petugas_lapangan: document.getElementById('namaField').value,
-        kode_sales: document.getElementById('kodeSales').value,
-        nama_kandang: document.getElementById('namaKandang').value,
-        nama_peternak: document.getElementById('namaPeternak').value,
-        nomor_peternak: document.getElementById('nomorPeternak').value,
-        alamat_kandang: document.getElementById('alamatKandang').value,
-        populasi: parseInt(document.getElementById('populasi').value),
-        umur_ayam: parseInt(document.getElementById('umurAyam').value),
-        catatan: document.getElementById('catatan').value,
-        latitude: parseFloat(lat),
-        longitude: parseFloat(lng),
-        timestamp: new Date().toISOString()
-      };
+    showToast('Kunjungan berhasil disimpan!', 'success');
+    document.getElementById('visitForm').reset();
+    document.getElementById('locationInfo').classList.add('hidden');
+    document.getElementById('customerInfo').style.display = 'none';
+    document.getElementById('healthRecommendations').classList.add('hidden');
 
-      if (isOnline && window.dataSdk) {
-        const result = await window.dataSdk.create(visitData);
-        
-        if (result.isOk) {
-          showToast('Kunjungan berhasil disimpan!', 'success');
-          document.getElementById('visitForm').reset();
-          document.getElementById('locationInfo').classList.add('hidden');
-          document.getElementById('customerInfo').style.display = 'none';
-          document.getElementById('healthRecommendations').classList.add('hidden');
-          const locationBtn = document.getElementById('locationBtn');
-          locationBtn.innerHTML = 'Gunakan Lokasi Saat Ini';
-          locationBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-          locationBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-        } else {
-          showToast('Gagal menyimpan: ' + result.error.message, 'error');
-        }
-      } else {
-        // Save to draft
-        draftVisits.push({ ...visitData, id: Date.now().toString() });
-        localStorage.setItem('medionDrafts', JSON.stringify(draftVisits));
-        updateDraftStatus();
-        showToast('Disimpan sebagai draft (offline)', 'info');
-        document.getElementById('visitForm').reset();
-        document.getElementById('locationInfo').classList.add('hidden');
-        document.getElementById('customerInfo').style.display = 'none';
-        document.getElementById('healthRecommendations').classList.add('hidden');
-        const locationBtn = document.getElementById('locationBtn');
-        locationBtn.innerHTML = 'Gunakan Lokasi Saat Ini';
-        locationBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-        locationBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-      }
+  } catch (error) {
+    console.error(error);
+    showToast('Gagal menyimpan data', 'error');
+  }
 
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Simpan Kunjungan';
-    });
-
+  submitBtn.disabled = false;
+  submitBtn.innerHTML = 'Simpan Kunjungan';
+});
     // Sync drafts
     async function syncDrafts() {
       if (!isOnline || draftVisits.length === 0 || !window.dataSdk) return;
@@ -1019,4 +1011,5 @@
     }, 300000);
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b06c0c1542cd7ad',t:'MTc2NjE0NTc2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
 </html>
